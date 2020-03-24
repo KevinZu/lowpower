@@ -21,7 +21,7 @@ public:
 ////////////// sleep /////////////////
 	int VA_Sleep(unsigned int sec);
 ////////////// system suspend ////////////
-	int VA_Suspend();
+	int VA_Standby();
 private:
 	WakeLock* m_wakeLock;
 	SysSuspend* m_sysSuspend;

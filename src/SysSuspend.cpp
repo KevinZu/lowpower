@@ -28,7 +28,7 @@ SysSuspend& SysSuspend::GetInstance()
 	return instance_;
 }
 
-int SysSuspend::Suspend()
+int SysSuspend::Standby()
 {
 	for(vector<string>::size_type i = 0;i != m_states.size();++i){
 		if (m_states[i] == "mem" ) {

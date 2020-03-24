@@ -15,7 +15,7 @@ public:
 
 	static SysSuspend& GetInstance();
 
-	int Suspend();
+	int Standby();
 private:
 	std::vector<std::string> m_states;
 };

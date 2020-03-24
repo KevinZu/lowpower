@@ -49,8 +49,8 @@ int LowPowerManager::VA_Sleep(unsigned int sec)
 
 
 /////////////// auto sleep //////////////////
-int LowPowerManager::VA_Suspend()
+int LowPowerManager::VA_Standby()
 {
-	return m_sysSuspend->Suspend();
+	return m_sysSuspend->Standby();
 }
 

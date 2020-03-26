@@ -16,8 +16,10 @@ public:
 	static SysSuspend& GetInstance();
 
 	int Standby();
+	int Suspend();
 private:
 	std::vector<std::string> m_states;
+	int m_stateFd;
 };
 
 }

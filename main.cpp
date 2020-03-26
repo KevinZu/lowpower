@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	std::cout << "==== lock id: " << manager.VA_Lock() << std::endl;
 
-	manager.VA_Suspend();
+	manager.VA_Standby();
 	
 	return 0;
 }

@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <string.h>
 #include <stdio.h>
 #include "utils.h"
 
@@ -53,3 +55,15 @@ std::vector<std::string> split(std::string str,std::string pattern)
     }
     return result;
 }
+
+
+int usleep_signal_safe(useconds_t usec)
+{
+	struct timespec ts;
+
+	memset(&ts, 0, sizeof(ts));
+	ts.tv_sec = usec / 1000 / 1000;
+	ts.tv_nsec = (usec % (1000 * 1000)) * 1000;
+	return TEMP_FAILURE_RETRY(nanosleep(&ts, &ts));
+}
+

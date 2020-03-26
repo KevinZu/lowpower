@@ -37,26 +37,25 @@ string getCmdResult(const string &strCmd)
 
 std::vector<std::string> split(std::string str,std::string pattern)
 {
-    std::string::size_type pos;
-    std::vector<std::string> result;
-    
-    str+=pattern;
-    int size=str.size();
-    
-    for(int i=0; i<size; i++)
-    {
-        pos=str.find(pattern,i);
-        if(pos<size)
-        {
-            std::string s=str.substr(i,pos-i);
-            result.push_back(s);
-            i=pos+pattern.size()-1;
-        }
-    }
-    return result;
+	std::string::size_type pos;
+	std::vector<std::string> result;
+
+	str+=pattern;
+	int size=str.size();
+
+	for(int i=0; i<size; i++) {
+		pos=str.find(pattern,i);
+		if(pos<size) {
+			std::string s=str.substr(i,pos-i);
+			result.push_back(s);
+			i=pos+pattern.size()-1;
+		}
+	}
+	
+	return result;
 }
 
-
+/*
 int usleep_signal_safe(useconds_t usec)
 {
 	struct timespec ts;
@@ -65,5 +64,5 @@ int usleep_signal_safe(useconds_t usec)
 	ts.tv_sec = usec / 1000 / 1000;
 	ts.tv_nsec = (usec % (1000 * 1000)) * 1000;
 	return TEMP_FAILURE_RETRY(nanosleep(&ts, &ts));
-}
+}*/
 

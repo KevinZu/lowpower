@@ -1,6 +1,7 @@
 #include <iostream>
 #include "WakeLock.h"
 #include "SysSuspend.h"
+#include "policy.h"
 #include "LowPowerManager.h"
 
 using namespace std;
@@ -52,5 +53,11 @@ int LowPowerManager::VA_Sleep(unsigned int sec)
 int LowPowerManager::VA_Standby()
 {
 	return m_sysSuspend->Standby();
+}
+
+////////////////////////////////////////////
+int LowPowerManager::VA_Policy()
+{
+	evaluate_policy();
 }
 

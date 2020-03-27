@@ -12,22 +12,19 @@ string getCmdResult(const string &strCmd)
 	char buf[10240] = {0};
 	FILE *pf = NULL;
 	
-	if( (pf = popen(strCmd.c_str(), "r")) == NULL )
-	{
+	if( (pf = popen(strCmd.c_str(), "r")) == NULL ){
 		return "";
 	}
  
 	string strResult;
-	while(fgets(buf, sizeof buf, pf))
-	{
+	while(fgets(buf, sizeof buf, pf)){
 		strResult += buf;
 	}
 	
 	pclose(pf);
  
 	unsigned int iSize =  strResult.size();
-	if(iSize > 0 && strResult[iSize - 1] == '\n')  // linux
-	{
+	if(iSize > 0 && strResult[iSize - 1] == '\n') { // linux
 		strResult = strResult.substr(0, iSize - 1);
 	}
  
@@ -55,14 +52,4 @@ std::vector<std::string> split(std::string str,std::string pattern)
 	return result;
 }
 
-/*
-int usleep_signal_safe(useconds_t usec)
-{
-	struct timespec ts;
-
-	memset(&ts, 0, sizeof(ts));
-	ts.tv_sec = usec / 1000 / 1000;
-	ts.tv_nsec = (usec % (1000 * 1000)) * 1000;
-	return TEMP_FAILURE_RETRY(nanosleep(&ts, &ts));
-}*/
 

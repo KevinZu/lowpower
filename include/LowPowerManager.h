@@ -23,6 +23,7 @@ public:
 ////////////// system suspend ////////////
 	int VA_Standby();
 	int VA_Policy();
+	int VA_AutoSleepEnable();
 private:
 	WakeLock* m_wakeLock;
 	SysSuspend* m_sysSuspend;

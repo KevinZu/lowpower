@@ -17,6 +17,7 @@ public:
 
 	int Standby();
 	int Suspend();
+	int AutoSleepEnable();
 private:
 	std::vector<std::string> m_states;
 	int m_stateFd;

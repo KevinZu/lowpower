@@ -61,3 +61,12 @@ int LowPowerManager::VA_Policy()
 	evaluate_policy();
 }
 
+int LowPowerManager::VA_AutoSleepEnable()
+{
+	if(m_sysSuspend){
+		return m_sysSuspend->AutoSleepEnable();
+	}
+		
+	return -1;
+}
+

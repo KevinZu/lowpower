@@ -50,6 +50,19 @@ int SysSuspend::Standby()
 	return STATE_MEM_NOT_EXIST;
 }
 
+int SysSuspend::AutoSleepEnable()
+{
+	for(vector<string>::size_type i = 0;i != m_states.size();++i){
+		if (m_states[i] == "mem" ) {
+			string cmd = "echo mem > /sys/power/autosleep";
+			return system(cmd.c_str());
+		}
+	}
+
+	cout << "The /sys/power/state dose not have this field" << endl;
+	return STATE_MEM_NOT_EXIST;
+}
+
 int SysSuspend::Suspend()
 {
 	int rc = 0;

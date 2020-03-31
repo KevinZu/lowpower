@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
 
 	std::cout << "==== lock id: " << manager.VA_Lock() << std::endl;
 
-	manager.VA_Policy();
+	//manager.VA_Policy();
 
-	manager.VA_Standby();
+	//manager.VA_Standby();
+	manager.VA_AutoSleepEnable();
 	
 	return 0;
 }

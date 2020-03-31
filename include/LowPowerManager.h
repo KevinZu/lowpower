@@ -8,6 +8,7 @@ namespace VoyagerAuto{
 
 class WakeLock;
 class SysSuspend;
+class EventDispatcher;
 
 class LowPowerManager {
     LowPowerManager();
@@ -27,6 +28,7 @@ public:
 private:
 	WakeLock* m_wakeLock;
 	SysSuspend* m_sysSuspend;
+	EventDispatcher *m_eventDispatcher;
 };
 
 }

@@ -3,6 +3,7 @@
 #include "SysSuspend.h"
 #include "policy.h"
 #include "LowPowerManager.h"
+#include "EventDispatcher.h"
 
 using namespace std;
 using namespace VoyagerAuto;
@@ -14,6 +15,7 @@ LowPowerManager::LowPowerManager()
 {
 	m_wakeLock = &WakeLock::GetInstance();
 	m_sysSuspend = &SysSuspend::GetInstance();
+	m_eventDispatcher= &EventDispatcher::GetInstance();
 	cout << "==========\n";
 }
 

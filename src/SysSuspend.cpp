@@ -55,6 +55,7 @@ int SysSuspend::AutoSleepEnable()
 	for(vector<string>::size_type i = 0;i != m_states.size();++i){
 		if (m_states[i] == "mem" ) {
 			string cmd = "echo mem > /sys/power/autosleep";
+			cout << cmd << endl;
 			return system(cmd.c_str());
 		}
 	}

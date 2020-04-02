@@ -16,7 +16,7 @@ LowPowerManager::LowPowerManager()
 	m_wakeLock = &WakeLock::GetInstance();
 	m_sysSuspend = &SysSuspend::GetInstance();
 	m_eventDispatcher= &EventDispatcher::GetInstance();
-	cout << "==========\n";
+	m_eventDispatcher->SetWakeLock(m_wakeLock);
 }
 
 
@@ -66,6 +66,7 @@ int LowPowerManager::VA_Policy()
 int LowPowerManager::VA_AutoSleepEnable()
 {
 	if(m_sysSuspend){
+		cout << "----- auto sleep -----" << endl;
 		return m_sysSuspend->AutoSleepEnable();
 	}
 		

@@ -8,9 +8,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
+#include <iostream>
 
 using namespace VoyagerAuto;
-
+using namespace std;
 
 #define GPIO_NOTIFY "/dev/gpio_notify"
 #define IRQ_EDGE "/sys/devices/soc:quec,quectel-low-consume/irq_edge"
@@ -37,9 +38,10 @@ void gpio_cb_handler(int signal)
 	printf("gpio irq: Have caught signal %d from driver\n", signal);
 
 	EventDispatcher *ed = &EventDispatcher::GetInstance();
+
 	WakeLock *wl = ed->GetWakeLock();
 	if (wl == NULL) {
-		printf("wakelock is null!\n");
+		printf("- wakelock is null!\n");
 		return;
 	}
 
@@ -63,28 +65,22 @@ void gpio_cb_handler(int signal)
 		printf("==================     %s: %d\n",__FUNCTION__,__LINE__);
 		printf("do something before enter sleep mode\n");
 		printf("module will enter sleep mode\n");
-		ioctl(notify_fd, 0);	//pull down notify mcu
-		printf("pull down notify mcu\n");
-		if (wl->UnLock(ed->GetWakeIntLock()) != 0) {
-			close(edge_fd);
-			printf("Unlock wakelock failed!\n");
-			return;
-		}
+		//ioctl(notify_fd, 0);	//pull down notify mcu
+		//printf("pull down notify mcu\n");
+		wl->UnLock(ed->GetWakeIntLock());
+
 		printf("================== wake unlock: %d\n",__LINE__);
 	
 	} else if(strncmp(edge, "rising", 6) == 0) {
 		printf("==================     %s: %d\n",__FUNCTION__,__LINE__);
 
 		int lockId = wl->Lock();
-		if (lockId < 0) {
-			close(edge_fd);
-			printf("Lock wakelock failed!\n");
-			return;
-		}
+
+		cout << "lockId: " << lockId << endl;
 
 		
-		ioctl(notify_fd, 1);	//pull up notify mcu
-		printf("pull up notify mcu\n");
+		//ioctl(notify_fd, 1);	//pull up notify mcu
+		//printf("pull up notify mcu\n");
 	}
 	close(edge_fd);
 }
@@ -141,16 +137,16 @@ EventDispatcher::~EventDispatcher()
 
 void EventDispatcher::SetWakeLock(WakeLock * wl)
 {
-	if (m_wakeLock == NULL) {
+	//if (m_wakeLock == NULL) {
 		m_wakeLock = wl;
-	}
+	//}
 }
 
 
 EventDispatcher& EventDispatcher::GetInstance()
 {
 	static EventDispatcher instance__;
-	instance__.m_wakeLock = NULL;
+	//instance__.m_wakeLock = NULL;
 	
 	return instance__;
 }

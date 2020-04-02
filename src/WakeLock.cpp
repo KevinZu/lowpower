@@ -55,6 +55,7 @@ WakeLock::WakeLock() : m_id(MY_ID),m_lock_count(0)
 		m_fds[i] = fd;
 	}
 
+	pthread_mutex_init(&m_mutex, NULL);
 	
 }
 
@@ -66,6 +67,8 @@ WakeLock::~WakeLock()
 		if(m_fds[i] > 0)
 			close(m_fds[i]);
 	}
+
+	pthread_mutex_destroy(&m_mutex);
 }
 
 WakeLock& WakeLock::GetInstance()
@@ -81,12 +84,16 @@ int WakeLock::Lock()
 		cout << "sys lock is failure!" << endl;
 		return -1;
 	}
+
+	
 	
 	if(m_lock_count == 0) {
 		AcquireWakeLock();
 	}
 
+	pthread_mutex_lock(&m_mutex);
 	m_lock_count += 1;
+	pthread_mutex_unlock(&m_mutex);
 	
 	return m_lock_count;
 }
@@ -103,7 +110,9 @@ int WakeLock::UnLock(int lockId)
 		ReleaseWakeLock();
 	}
 
+	pthread_mutex_lock(&m_mutex);
 	m_lock_count -= 1;
+	pthread_mutex_unlock(&m_mutex);
 	
 	return m_lock_count;
 }

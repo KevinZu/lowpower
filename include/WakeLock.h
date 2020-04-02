@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <string>
+#include <pthread.h>
 
 
 namespace VoyagerAuto {
@@ -20,6 +21,7 @@ enum {
 
 #if __cplusplus
 extern "C" {
+
 #endif
 
 // while you have a lock held, the device will stay on at least at the
@@ -39,11 +41,12 @@ public:
 	int Lock();
 	int UnLock(int);
 private:
-	int AcquireWakeLock();
-	int ReleaseWakeLock();
+    int AcquireWakeLock();
+    int ReleaseWakeLock();
 	int m_fds[OUR_FD_COUNT];
-	std::string m_id;
-	int m_lock_count;
+    std::string m_id;
+    int m_lock_count;
+    pthread_mutex_t m_mutex;
 };
 
 }

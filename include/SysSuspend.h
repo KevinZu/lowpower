@@ -6,7 +6,7 @@
 
 #define   STATE_MEM_NOT_EXIST  -1110
 
-namespace VoyagerAuto {
+namespace nebula {
 
 class SysSuspend {
 	SysSuspend();

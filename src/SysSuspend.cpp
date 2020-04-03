@@ -8,7 +8,7 @@
 #include "utils.h"
 #include "SysSuspend.h"
 
-using namespace VoyagerAuto;
+using namespace nebula;
 using namespace std;
 
 

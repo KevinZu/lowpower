@@ -6,7 +6,7 @@
 #include "EventDispatcher.h"
 
 using namespace std;
-using namespace VoyagerAuto;
+using namespace nebula;
 ///////////////////////////////////////////////////// 
 ///LowPowerManager ////////////////////////////// 
 

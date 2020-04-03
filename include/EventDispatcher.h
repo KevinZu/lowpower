@@ -3,7 +3,7 @@
 
 #include "WakeLock.h"
 
-namespace VoyagerAuto {
+namespace nebula {
 
 //class WakeLock;
 

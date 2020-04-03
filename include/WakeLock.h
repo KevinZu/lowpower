@@ -6,7 +6,7 @@
 #include <pthread.h>
 
 
-namespace VoyagerAuto {
+namespace nebula {
 
 enum {
 	ACQUIRE_PARTIAL_WAKE_LOCK = 0,

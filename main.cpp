@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "LowPowerManager.h"
 
-using namespace VoyagerAuto;
+using namespace nebula;
 
 
 int main(int argc, char *argv[])

@@ -4,7 +4,7 @@
 /**
  * 
  */
-namespace VoyagerAuto{
+namespace nebula{
 
 class WakeLock;
 class SysSuspend;

@@ -10,7 +10,7 @@
 #include <sys/ioctl.h>
 #include <iostream>
 
-using namespace VoyagerAuto;
+using namespace nebula;
 using namespace std;
 
 #define GPIO_NOTIFY "/dev/gpio_notify"

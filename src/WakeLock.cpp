@@ -12,7 +12,7 @@
 #include <sys/types.h>
 #include <pthread.h>
 
-using namespace VoyagerAuto;
+using namespace nebula;
 using namespace std;
 //////////////////////////////////////////////////////////
 
